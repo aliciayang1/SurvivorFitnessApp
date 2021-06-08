@@ -46,10 +46,6 @@ changeText = (newValue)=>{
   render() {
     return (
         <View style = {styles.container}>
-            <View style={styles.fixedHeader}>
-
-
-            </View>
             <ScrollView contentContainerStyle = {
                 {
                     position: 'fixed',
@@ -60,11 +56,10 @@ changeText = (newValue)=>{
                         style={{maxHeight: '100%'}}
 
             >
-                <View style={styles.sessionNumberContainer}>
-                    <TouchableOpacity onPress = {() => this.alertLogSession()}>
-                        <Text style={styles.sessionNumberText}> Log Session {this.props.session} </Text>
-                    </TouchableOpacity>
-                </View>
+                <AppButton
+                            title = {this.state.edit ? "Save" : "Log Session"}
+                            onPress={()=>this.setState({edit: !this.state.edit})}
+                        />
                 <DateTextBox edit = {this.state.edit}/>
                     <View style={styles.notes}>
                         <Text style = {styles.title}> Trainer Notes: </Text>
@@ -76,20 +71,17 @@ changeText = (newValue)=>{
                         />
 
                         <Text style={styles.finePrint}>
-                            *If needed, please contact ____ with any concerns or questions.
+                            If needed, please contact your admin with any concerns or questions.
                         </Text>
 
                         <Text style = {styles.title}> Admin Notes: </Text>
                         <MultilineInputSaveComponent
                             edit={false}
-                            value={"Lorem Impsum dolor"}
+                            value={""}
                             placeholder = ""
                             changeText = {newValue => this.changeText(newValue)}
                         />
-                        <AppButton
-                            title = {this.state.edit ? "SAVE" : "EDIT"}
-                            onPress={()=>this.setState({edit: !this.state.edit})}
-                        />
+                        
                     </View>
             </ScrollView>
         </View>
@@ -121,8 +113,8 @@ const styles = StyleSheet.create({
         position: 'relative',
     },
     title:{
-        fontSize: 16,
-        fontWeight:'bold',
+        fontSize: 15,
+        fontWeight:'400',
         color: '#838383',
     },
     finePrint:{
@@ -138,33 +130,16 @@ const styles = StyleSheet.create({
         borderRadius: 10,
         paddingVertical: 10,
         paddingHorizontal: 12,
-        width: 150,
+        width: 200,
         alignSelf: "center",
         margin: 20
     },
     appButtonText: {
-        fontSize: 18,
+        fontSize: 15,
         color: "#fff",
         fontWeight: "bold",
         alignSelf: "center",
         textTransform: "uppercase"
     },
-    sessionNumberContainer: {
-        elevation: 8,
-        backgroundColor:'#AED804',
-        borderRadius: 10,
-        paddingVertical: 10,
-        paddingHorizontal: 12,
-        width: '90%',
-        height: '7%',
-        alignSelf: "center",
-        margin: 20,
-        justifyContent: "center",
-    },
-    sessionNumberText: {
-        fontSize: 15,
-        color: "#fff",
-        fontWeight: "bold",
-        alignSelf: "center",
-    },
+
 });

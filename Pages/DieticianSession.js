@@ -48,10 +48,7 @@ export default class DieticianSession extends Component {
     render() {
         return (
             <View style = {styles.container}>
-                <View style={styles.fixedHeader}>
 
-
-                </View>
                 <ScrollView contentContainerStyle = {
                     {
                         position: 'fixed',
@@ -62,14 +59,13 @@ export default class DieticianSession extends Component {
                             style={{maxHeight: '100%'}}
 
                 >
-                    <View style={styles.sessionNumberContainer}>
-                        <TouchableOpacity onPress = {() => this.alertLogSession()}>
-                            <Text style={styles.sessionNumberText}> Log Session {this.props.session} </Text>
-                        </TouchableOpacity>
-                    </View>
+                    <AppButton
+                            title = {this.state.edit ? "Save" : "Log Session"}
+                            onPress={()=>this.setState({edit: !this.state.edit})}
+                        />
                     <DateTextBox edit = {this.state.edit}/>
                     <View style={styles.notes}>
-                        <Text style = {styles.title}> Dietician Notes: </Text>
+                        <Text style = {styles.title}> Dietitian Notes: </Text>
                         <MultilineInputSaveComponent
                             edit={this.state.edit}
                             value={this.state.dieticianNotes}
@@ -102,7 +98,7 @@ export default class DieticianSession extends Component {
 const styles = StyleSheet.create({
     container: {
         backgroundColor: '#fff',
-        alignItems: 'flex-start',
+      alignItems: 'flex-start',
     },
     sessionNumberContainer: {
             elevation: 8,
@@ -131,8 +127,8 @@ const styles = StyleSheet.create({
         position: 'relative',
     },
     title:{
-        fontSize: 16,
-        fontWeight:'bold',
+        fontSize: 15,
+        fontWeight:'400',
         color: '#838383',
     },
     finePrint:{
@@ -141,22 +137,21 @@ const styles = StyleSheet.create({
         margin:10,
         color: '#838383',
     },
-
     appButtonContainer: {
         elevation: 8,
         backgroundColor:'#AED804',
         borderRadius: 10,
         paddingVertical: 10,
         paddingHorizontal: 12,
-        width: 150,
+        width: 200,
         alignSelf: "center",
         margin: 20
     },
     appButtonText: {
-        fontSize: 18,
+        fontSize: 15,
         color: "#fff",
         fontWeight: "bold",
         alignSelf: "center",
         textTransform: "uppercase"
-    }
+    },
 });

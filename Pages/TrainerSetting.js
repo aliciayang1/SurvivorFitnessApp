@@ -2,29 +2,27 @@ import React from 'react';
 import Icon from "react-native-vector-icons/MaterialIcons";
 import { StyleSheet, View, TouchableOpacity, Text} from 'react-native';
 import SettingsTab from "../Components/SettingsTab.js";
+import Icon2 from 'react-native-vector-icons/Ionicons';
 
-export default class SettingsPage extends React.Component {
+export default class TrainerSettingsPage extends React.Component {
 
     render(){
       return (
         <View style={styles.container}>
-            <View style={{flexDirection: "row", justifyContent: "space-between", alignItems: "center", paddingRight : 25}}>
+            <View style={{flexDirection: "row", justifyContent: "space-between", alignItems: "center"}}>
                     <Text style={styles.workHeadline}>Settings</Text>
             </View>
-            <View style={{flexDirection: 'column'}}>
+            <View style={{flexDirection: 'column', width:"100%"}}>
             <TouchableOpacity onPress={() => this.props.navigation.navigate('ProfilePage')}>
               <View style={styles.row}>
                   <Text style={styles.text}>Profile</Text>
+                  <Icon style={styles.settings} size={30} color="#E4E4E4" name={'keyboard-arrow-right'}/>
               </View>
             </TouchableOpacity>
             <TouchableOpacity>
               <View style={styles.row}>
-                  <Text style={styles.text}>Switch to Trainer Account</Text>
-              </View>
-            </TouchableOpacity>
-            <TouchableOpacity>
-              <View style={styles.row}>
-                  <Text style={styles.text}>Download Data</Text>
+                  <Text style={styles.text}>Switch to Admin Account</Text>
+                  <Icon style={styles.settings} size={30} color="#E4E4E4" name={'keyboard-arrow-right'}/>
               </View>
             </TouchableOpacity>
                 <View style={{alignItems: 'center'}}>
@@ -45,8 +43,8 @@ export default class SettingsPage extends React.Component {
       justifyContent: 'flex-start',
     },
     headline: {
-        fontWeight: 'bold',
-        fontSize: 25,
+        fontWeight: '500',
+        fontSize: 18,
         position: 'absolute',
         marginTop: 45,
         marginLeft: 0,
@@ -55,17 +53,17 @@ export default class SettingsPage extends React.Component {
         flexWrap:'wrap',
         flex: 1,
         opacity: 1,
-        zIndex: 15
+
     },
     workHeadline:{
       fontSize: 25,
       marginTop: 50,
-      marginLeft: 15,
       padding: 25,
-      color: '#AED803',
+      fontWeight: "600",
+      color: '#3E3E3E',
     },
     loginBtn:{
-      width:"60%",
+      width:"40%",
       backgroundColor:"#A1C703",
       borderRadius:10,
       height:50,
